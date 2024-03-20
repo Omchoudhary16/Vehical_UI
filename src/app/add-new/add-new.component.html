@@ -1,0 +1,116 @@
+<div class="container">
+    <div class="col-sm-10"></div>
+    <div>
+        <h4 class="offset-sm-5 my-2" *ngIf="id == null">Add New Vehicle</h4>
+        <h4 class="offset-sm-5 my-2" *ngIf="id != null">Update Vehicle</h4>
+    </div>
+    <hr>
+    <div class="container">
+        <form #form="ngForm" [formGroup]="addForm" (ngSubmit)="onAddNew()">
+            <div class="mb-3 col-sm-6 offset-sm-3">
+                <label for="company" class="form-label">Company Name</label>
+                <input type="text" class="form-control" name="" id="" placeholder="" formControlName="company">
+                <div *ngIf="addForm.controls['company'].errors && (form.submitted || addForm.controls['company'].dirty)">
+                    <small [hidden]="!addForm.controls['company'].errors['required']" class="text-danger">
+                        Please Enter Company Name
+                    </small>
+                    <small [hidden]="!addForm.controls['company'].errors['minlength']" class="text-danger">
+                        Please Enter Minimum 2 Character.
+                    </small>
+                    <small [hidden]="!addForm.controls['company'].errors['maxlength']" class="text-danger">
+                        Please Enter Maximum 20 Character.
+                    </small>
+                </div>
+            </div>
+
+            <div class="mb-3 col-sm-6 offset-sm-3">
+                <label for="model" class="form-label">Vehicle Model</label>
+                <input type="text" class="form-control" name="" id="" placeholder="" formControlName="model">
+                <div *ngIf="addForm.controls['model'].errors && (form.submitted || addForm.controls['model'].dirty)">
+                    <small [hidden]="!addForm.controls['model'].errors['required']" class="text-danger">
+                        Please Enter Model Name
+                    </small>
+                    <small [hidden]="!addForm.controls['model'].errors['minlength']" class="text-danger">
+                        Please Enter Minimum 2 Character.
+                    </small>
+                    <small [hidden]="!addForm.controls['model'].errors['maxlength']" class="text-danger">
+                        Please Enter Maximum 20 Character.
+                    </small>
+                </div>
+            </div>
+
+            <div class="mb-3 col-sm-6 offset-sm-3">
+                <label for="capacity" class="form-label">Seating Capacity</label>
+                <select class="form-control" name="" id="" formControlName="capacity">
+                    <option value="null">Select</option>
+                    <option>Two</option>
+                    <option>Four</option>
+                    <option>Four + One</option>
+                    <option>Seven + One</option>
+                </select>
+                <div
+                    *ngIf="addForm.controls['capacity'].errors && (form.submitted || addForm.controls['capacity'].dirty)">
+                    <small [hidden]="!addForm.controls['capacity'].errors['required']" class="text-danger">
+                        Please Select Seating Capacity
+                    </small>
+                </div>
+            </div>
+
+            <div class="mb-3 col-sm-6 offset-sm-3">
+                <label for="showroomPrice" class="form-label">Showroom Price</label>
+                <input type="text" class="form-control" name="" id="" placeholder="" formControlName="showroomPrice"
+                    (keyup)="AddValue()">
+                <div
+                    *ngIf="addForm.controls['showroomPrice'].errors && (form.submitted || addForm.controls['showroomPrice'].dirty)">
+                    <small [hidden]="!addForm.controls['showroomPrice'].errors['required']" class="text-danger">
+                        Please Enter Showroom Price
+                    </small>
+                </div>
+            </div>
+
+
+            <div class="row offset-sm-3">
+                <div class="col-sm-3">
+                    <div class="mb-3">
+                        <label for="localTax" class="form-label">Local Tax</label>
+                        <input type="text" class="form-control" name="" id="" placeholder="" formControlName="localTax">
+                        <div
+                            *ngIf="addForm.controls['localTax'].errors && (form.submitted || addForm.controls['localTax'].dirty)">
+                            <small [hidden]="!addForm.controls['localTax'].errors['required']" class="text-danger">
+                                Please Enter Local Tax
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="mb-3">
+                        <label for="gst" class="form-label">GST</label>
+                        <input type="text" class="form-control" name="" id="" placeholder="" formControlName="gst">
+                        <div
+                            *ngIf="addForm.controls['gst'].errors && (form.submitted || addForm.controls['gst'].dirty)">
+                            <small [hidden]="!addForm.controls['gst'].errors['required']" class="text-danger">
+                                Please Enter GST
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3 col-sm-6 offset-sm-3">
+                <label for="roadPrice" class="form-label">Road Price</label>
+                <input type="text" class="form-control" name="" id="" placeholder="" formControlName="roadPrice">
+                <div
+                    *ngIf="addForm.controls['roadPrice'].errors && (form.submitted || addForm.controls['roadPrice'].dirty)">
+                    <small [hidden]="!addForm.controls['roadPrice'].errors['required']" class="text-danger">
+                        Please Enter Road Price
+                    </small>
+                </div>
+            </div>
+
+            <button class="btn btn-success my-2 offset-sm-3" type="submit"  *ngIf="id == null">Submit</button>&nbsp;
+            <button class="btn btn-warning my-2 offset-sm-3" type="submit" *ngIf="id != null">Update</button>&nbsp;
+            <button   class="btn btn-secondary" type="reset">Reset</button>
+        </form>
+    </div>
+
+</div>
